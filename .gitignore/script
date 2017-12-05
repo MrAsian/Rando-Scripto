@@ -8,18 +8,18 @@ echo
 
 for program in netcat , nc , john , bind9 , cain , vsftpd , telnet , nginx , samba , tftp-server
 do
-	which $program >> output
+	which $program > output
 done
 for files in *.png , *.jpg , *.mp3 , *.mp4 
 do
 	find /home -name $files >> output
 done
 
-#replace everyone's password with a default "Goodpassword1"
+#replace everyone's password with a default "Goodpassword1!"
 ls /home > users 
 cat users | while read users
 do
-	echo -e $users:"Goodpassword1" | chpasswd
+	echo -e $users:"Goodpassword1!" | chpasswd
 done
 
 # Red Hat Enterprise Linux 6 stig viewers
