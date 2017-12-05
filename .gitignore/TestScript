@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ls /home > users
-while read users
+cat users | while read users
 do
-	echo $users:"brandnewpassword" | chpasswd
+	echo -e $users:"brandnewpassword" | chpasswd
 done
