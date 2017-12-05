@@ -1,0 +1,103 @@
+#!/bin/bash
+
+echo 
+echo "Beginning Script"
+echo 
+echo 
+
+
+for program in netcat , nc , john , bind9 , cain , vsftpd , telnet , nginx , samba , tftp-server
+do
+	which $program >> output
+done
+for files in *.png , *.jpg , *.mp3 , *.mp4 
+do
+	find /home -name $files >> output
+done
+
+
+# Red Hat Enterprise Linux 6 stig viewers
+# sets file to be group-owned by root
+# V-38448 V-38451 V-38459 V-38503 V-38581
+for groupown in /etc/gshadow , /etc/password , /etc/group , /etc/shadow , /boot/grub/grub.conf
+do
+	chgrp root $groupown
+done
+# sets file to be owned by root
+# V-38443 V-38450 V-38458 V-38502 V-38579
+for own in /etc/gshadow , /etc/password , /etc/group , /etc/shadow , /boot/grub/grub.conf
+do
+	chown root $own
+done
+# sets file to specific permission
+# V-38449 V-38457 V-38461 V-38504 V-38583
+chmod 0000 /etc/gshadow
+chmod 0644 /etc/passwd
+chmod 0644 /etc/group
+chmod 0000 /etc/shadow
+chmod 0600 /boot/grub/grub.conf
+# V-38588	disable interactive booting (add or correct "PROMPT=no")
+gedit /etc/sysconfig/init
+# V-38603	uninstall ypserv package(?)
+apt-get purge ypserv
+# V-38604	sets ypbind service (allow system to act as NIS or NIS+ domain)to be off
+chkconfig ypbind off
+service ypbind stop
+# V-38605	sets crond service to be on
+chkconfig crond on
+service crond start
+# V-38691	disable bluetooth service
+chkconfig bluetooth off
+service bluetooth stop
+
+# Oracle Linux 6 stig viewers
+# V-50787	All system command files must have mode 755 or less permissive
+for mode755 in /bin , /usr/bin , /usr/local/bin , /sbin , /usr/sbin , /usr/local/sbin
+do
+	chmod go-w $mode755
+done
+
+#locks root account password
+passwd -l root
+
+# disable guest account
+if ! grep "allow-guest=false" /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf > /dev/null
+then
+	echo "allow-guest=false" >> /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
+fi
+
+# ssh settings
+# also check /etc/ssh/sshd_config and make sure "PermitRootLogin" is set to no
+# check out "sed examples replace" on google
+if grep "PasswordAuthentication yes" /etc/ssh/ssh_config > /dev/null
+then
+	gedit /etc/ssh/ssh_config
+fi
+gedit /etc/ssh/sshd_config
+
+# change 'password [success=1 default=ignore] pam_unix.so obscure sha512'
+# to 'password [success=1 default=ignore] pam_unix.so obscure sha512 minlen=12 retry=3'
+gedit /etc/pam.d/common-password
+
+# minimum and maximum password age
+# make sure "ENCRYPT_METHOD SHA512" is in the file
+gedit /etc/login.defs
+
+# make sure nothing is in this file
+gedit /etc/rc.local
+
+# install and enable firewall, along with other useful stuff
+apt-get -y update
+apt-get -y upgrade
+for installs in ufw , chkrootkit , clamav , rkhunter , apparmor , lynis
+do
+	apt-get -y install $installs
+done
+ufw enable
+/usr/sbin/chkrootkit > chkrootkit
+
+
+
+echo 
+echo "end of script"
+echo 
