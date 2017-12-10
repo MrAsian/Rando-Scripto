@@ -15,11 +15,11 @@ do
 	find /home -name $files >> output
 done
 
-#replace everyone's password with a default "Goodpassword1!"
+#replace everyone's password with a default "Goodpassword123!"
 ls /home > users 
 cat users | while read users
 do
-	echo -e $users:"Goodpassword1!" | chpasswd
+	echo -e $users:"Goodpassword123!" | chpasswd
 done
 
 # Red Hat Enterprise Linux 6 stig viewers
