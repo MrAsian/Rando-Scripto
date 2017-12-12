@@ -1,4 +1,5 @@
 #!/bin/bash
+sudo su
 
 clear
 
@@ -18,6 +19,8 @@ do
 	echo -e $users:"Goodpassword123!" | chpasswd
 done
 rm users
+
+clear
 
 # Red Hat Enterprise Linux 6 stig viewers
 # sets file to be group-owned by root
@@ -60,14 +63,20 @@ do
 	chmod go-w $mode755
 done
 
+clear
+
 #locks root account password
 passwd -l root
+clear
+echo "Root account password secured."
 
 # disable guest account
 if ! grep "allow-guest=false" /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf > /dev/null
 then
 	echo "allow-guest=false" >> /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
 fi
+clear
+echo "Guest account is disabled."
 
 # ssh settings
 # also check /etc/ssh/sshd_config and make sure "PermitRootLogin" is set to no
@@ -91,7 +100,7 @@ gedit /etc/rc.local
 
 clear
 
-read -p "set proper update settings?"
+read -p "Proper update settings have been set? Press \"enter\" continue."
 
 # install and enable firewall, along with other useful stuff
 apt-get -y update
@@ -102,6 +111,9 @@ do
 done
 ufw enable
 /usr/sbin/chkrootkit > chkrootkit
+clear
+
 
 clear
 echo "end of script"
+clear
