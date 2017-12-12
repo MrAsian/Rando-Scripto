@@ -89,10 +89,14 @@ gedit /etc/login.defs
 # make sure nothing is in this file
 gedit /etc/rc.local
 
+clear
+
+read -p "set proper update settings?"
+
 # install and enable firewall, along with other useful stuff
 apt-get -y update
 apt-get -y upgrade
-for installs in ufw , chkrootkit , clamav , rkhunter , apparmor , lynis
+for installs in apparmor , chkrootkit , clamav , lynis , rkhunter , ufw
 do
 	apt-get -y install $installs
 done
