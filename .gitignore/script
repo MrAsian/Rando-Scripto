@@ -68,6 +68,8 @@ clear
 passwd -l root
 clear
 echo "Root account password secured."
+sleep 1
+clear
 
 # disable guest account
 if ! grep "allow-guest=false" /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf > /dev/null
@@ -76,6 +78,8 @@ then
 fi
 clear
 echo "Guest account is disabled."
+sleep 1
+clear
 
 # ssh settings
 # also check /etc/ssh/sshd_config and make sure "PermitRootLogin" is set to no
@@ -98,7 +102,6 @@ gedit /etc/login.defs
 gedit /etc/rc.local
 
 clear
-
 read -p "Proper update settings have been set? Press \"enter\" continue."
 
 # install and enable firewall, along with other useful stuff
@@ -115,4 +118,5 @@ clear
 
 clear
 echo "end of script"
+sleep 1
 clear
