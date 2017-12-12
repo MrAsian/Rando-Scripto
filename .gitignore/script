@@ -1,16 +1,12 @@
 #!/bin/bash
 
-echo 
-echo "Beginning Script"
-echo 
-echo 
+clear
 
-
-for program in netcat , nc , john , bind9 , cain , vsftpd , telnet , nginx , samba , tftp-server
+for program in apache2 , bind9 , cain , john , nc , netcat , nginx , samba , telnet , tftp-server , vsftpd
 do
-	which $program > output
+	whereis $program > output
 done
-for files in *.png , *.jpg , *.mp3 , *.mp4 
+for files in *.jpg , *.mp3 , *.mp4 , *.png
 do
 	find /home -name $files >> output
 done
@@ -21,6 +17,7 @@ cat users | while read users
 do
 	echo -e $users:"Goodpassword123!" | chpasswd
 done
+rm users
 
 # Red Hat Enterprise Linux 6 stig viewers
 # sets file to be group-owned by root
@@ -102,8 +99,5 @@ done
 ufw enable
 /usr/sbin/chkrootkit > chkrootkit
 
-
-
-echo 
+clear
 echo "end of script"
-echo 
