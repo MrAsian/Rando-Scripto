@@ -79,22 +79,16 @@ echo "Guest account is disabled."
 sleep 1
 clear
 
-# ssh settings
-# also check /etc/ssh/sshd_config and make sure "PermitRootLogin" is set to no
-# check out "sed examples replace" on google
-if grep "PasswordAuthentication yes" /etc/ssh/ssh_config > /dev/null
-then
-	gedit /etc/ssh/ssh_config
-fi
-gedit /etc/ssh/sshd_config
+# ssh and sshd settings
+sed -i -e "s/PasswordAuthentication yes/PasswordAuthentication no/" /etc/ssh/ssh_config
+sed -i -e "s/PermitRootLogin yes/PermitRootLogin no/" /etc/ssh/sshd_config
 
-# change 'password [success=1 default=ignore] pam_unix.so obscure sha512'
-# to 'password [success=1 default=ignore] pam_unix.so obscure sha512 minlen=12 retry=3'
-gedit /etc/pam.d/common-password
+# password policy(?)
+sed -i -e "s/obscure sha512/obscure sha512 minlen=12 retry=3/" /etc/pam.d/common-password
 
 # minimum and maximum password age
-# make sure "ENCRYPT_METHOD SHA512" is in the file
-gedit /etc/login.defs
+sed -i -e "s/PASS_MAX_DAYS	99999/PASS_MAX_DAYS	60/" /etc/login.defs
+sed -i -e "s/PASS_MIN_DAYS	0/PASS_MIN_DAYS	59/" /etc/login.defs
 
 # make sure nothing is in this file
 gedit /etc/rc.local
