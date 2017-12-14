@@ -2,7 +2,7 @@
 
 clear
 
-for program in apache2 , bind9 , cain , hydra , john , nc , netcat , nginx , samba , telnet , tftp-server , vsftpd
+for program in apache2 , bind9 , cain , hydra , john , nc , netcat , nginx , postgresql , samba , telnet , tftp-server , vsftpd
 do
 	which $program >> output
 done
