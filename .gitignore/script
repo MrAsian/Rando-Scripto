@@ -11,14 +11,12 @@ do
 	find /home -name $files >> output
 done
 
-#replace everyone's password with a default "Goodpassword123!"
 ls /home > users 
 cat users | while read users
 do
 	echo -e $users:"Goodpassword123!" | chpasswd
 done
 rm users
-clear
 echo "Default password [Goodpassword123!] has been set"
 sleep 1
 clear
@@ -67,7 +65,6 @@ done
 clear
 
 passwd -l root
-clear
 echo "Root account password secured."
 sleep 1
 clear
@@ -76,7 +73,6 @@ if ! grep "allow-guest=false" /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf >
 then
 	echo "allow-guest=false" >> /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
 fi
-clear
 echo "Guest account is disabled."
 sleep 1
 clear
@@ -90,7 +86,6 @@ clear
 sed -i -e "s/obscure sha512/obscure sha512 minlen=12 retry=3/" /etc/pam.d/common-password
 sed -i -e "s/PASS_MAX_DAYS	99999/PASS_MAX_DAYS	60/" /etc/login.defs
 sed -i -e "s/PASS_MIN_DAYS	0/PASS_MIN_DAYS	59/" /etc/login.defs
-clear
 echo "Password policy has been set."
 sleep 1
 clear
@@ -113,6 +108,6 @@ ufw enable
 clear
 
 
-echo "end of script"
+echo "End of script"
 sleep 1
 clear
