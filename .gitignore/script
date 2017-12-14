@@ -18,8 +18,9 @@ do
 	echo -e $users:"Goodpassword123!" | chpasswd
 done
 rm users
-
 clear
+echo "Default password [Goodpassword123!] has been set"
+sleep 1
 
 # Red Hat Enterprise Linux 6 stig viewers
 # sets file to be group-owned by root
@@ -64,13 +65,11 @@ done
 
 clear
 
-#locks root account password
 passwd -l root
 echo "Root account password secured."
 sleep 1
 clear
 
-# disable guest account
 if ! grep "allow-guest=false" /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf > /dev/null
 then
 	echo "allow-guest=false" >> /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
@@ -79,22 +78,22 @@ echo "Guest account is disabled."
 sleep 1
 clear
 
-# ssh and sshd settings
 sed -i -e "s/PasswordAuthentication yes/PasswordAuthentication no/" /etc/ssh/ssh_config
 sed -i -e "s/PermitRootLogin yes/PermitRootLogin no/" /etc/ssh/sshd_config
+echo "SSH and SSHD policies have been set."
+clear
 
-# password policy(?)
 sed -i -e "s/obscure sha512/obscure sha512 minlen=12 retry=3/" /etc/pam.d/common-password
-
-# minimum and maximum password age
 sed -i -e "s/PASS_MAX_DAYS	99999/PASS_MAX_DAYS	60/" /etc/login.defs
 sed -i -e "s/PASS_MIN_DAYS	0/PASS_MIN_DAYS	59/" /etc/login.defs
+echo "Password policy has been set."
+clear
 
 # make sure nothing is in this file
 gedit /etc/rc.local
 
 clear
-read -p "Proper update settings have been set? Press \"enter\" continue."
+read -p "Proper update settings have been set? Press [enter] continue."
 
 # install and enable firewall, along with other useful stuff
 apt-get -y update
