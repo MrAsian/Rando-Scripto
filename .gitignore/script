@@ -4,7 +4,7 @@ clear
 
 for program in apache2 , bind9 , cain , john , nc , netcat , nginx , samba , telnet , tftp-server , vsftpd
 do
-	whereis $program >> output
+	which $program >> output
 done
 for files in *.jpg , *.mp3 , *.mp4 , *.png
 do
