@@ -91,6 +91,10 @@ echo "Password policy has been set."
 sleep 1
 clear
 
+sed -i -e "s/alias net-pf-10 off/alias ipv6 off/" /etc/modprobe.d/aliases
+echo "IPv6 is disabled"
+clear
+
 # make sure nothing is in this file
 gedit /etc/rc.local
 
