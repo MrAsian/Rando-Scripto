@@ -2,7 +2,7 @@
 
 clear
 
-for program in apache2 , bind9 , cain , hydra , john , nc , netcat , nginx , postgresql , samba , telnet , tftp-server , vsftpd
+for program in apache2 , bind9 , cain , cracklib , hydra , john , nc , netcat , nginx , postgresql , samba , telnet , tftp-server , vsftpd
 do
 	which $program >> output
 done
@@ -100,15 +100,26 @@ read -p "Proper update settings have been set? Press [enter] continue."
 # install and enable firewall, along with other useful stuff
 apt-get -y update
 apt-get -y upgrade
-for installs in apparmor , chkrootkit , clamav , lynis , rkhunter , ufw
+for installs in apparmor , bastille , chkrootkit , clamav , lynis , rkhunter , ufw
 do
 	apt-get -y install $installs
 done
 ufw enable
 /usr/sbin/chkrootkit > chkrootkit
+bastille -c
 clear
 
+# some other stuffs
+for permissions in /etc/hosts.allow , /etc/mtab , /etc/profile , /etc/syslog.pid , /etc/utmp , /var/adm/wtmp , /var/log/wtmp , /var/run/syslog.pid , /etc/inittab , /etc/sysctl.conf
+do
+	chmod 0700 $permissions
+done
+gedit /etc/resolv.conf
+gedit /etc/hosts
+gedit /etc/passwd
+gedit /etc/shadow
 
+clear
 echo "End of script"
 sleep 1
 clear
