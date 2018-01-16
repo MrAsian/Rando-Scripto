@@ -2,11 +2,11 @@
 
 clear
 
-for program in apache2 , bind9 , cain , cracklib , hydra , john , nc , netcat , nginx , postgresql , samba , telnet , tftp-server , vsftpd
+for program in apache2 bind9 cain cracklib hydra john nc netcat nginx postgresql samba telnet tftp-server vsftpd
 do
 	which $program >> output
 done
-for files in *.jpg , *.mp3 , *.mp4 , *.png
+for files in *.jpg *.mp3 *.mp4 *.png
 do
 	find /home -name $files >> output
 done
@@ -24,13 +24,13 @@ clear
 # Red Hat Enterprise Linux 6 stig viewers
 # sets file to be group-owned by root
 # V-38448 V-38451 V-38459 V-38503 V-38581
-for groupown in /etc/gshadow , /etc/password , /etc/group , /etc/shadow , /boot/grub/grub.conf
+for groupown in /etc/gshadow /etc/password /etc/group /etc/shadow /boot/grub/grub.conf
 do
 	chgrp root $groupown
 done
 # sets file to be owned by root
 # V-38443 V-38450 V-38458 V-38502 V-38579
-for own in /etc/gshadow , /etc/password , /etc/group , /etc/shadow , /boot/grub/grub.conf
+for own in /etc/gshadow /etc/password /etc/group /etc/shadow /boot/grub/grub.conf
 do
 	chown root $own
 done
@@ -57,7 +57,7 @@ service bluetooth stop
 
 # Oracle Linux 6 stig viewers
 # V-50787	All system command files must have mode 755 or less permissive
-for mode755 in /bin , /usr/bin , /usr/local/bin , /sbin , /usr/sbin , /usr/local/sbin
+for mode755 in /bin /usr/bin /usr/local/bin /sbin /usr/sbin /usr/local/sbin
 do
 	chmod go-w $mode755
 done
@@ -104,7 +104,7 @@ read -p "Proper update settings have been set? Press [enter] continue."
 # install and enable firewall, along with other useful stuff
 apt-get -y update
 apt-get -y upgrade
-for installs in apparmor , bastille , chkrootkit , clamav , lynis , rkhunter , ufw
+for installs in apparmor bastille chkrootkit clamav lynis rkhunter ufw
 do
 	apt-get -y install $installs
 done
@@ -114,7 +114,7 @@ bastille -c
 clear
 
 # some other stuffs
-for permissions in /etc/hosts.allow , /etc/mtab , /etc/profile , /etc/syslog.pid , /etc/utmp , /var/adm/wtmp , /var/log/wtmp , /var/run/syslog.pid , /etc/inittab , /etc/sysctl.conf
+for permissions in /etc/hosts.allow /etc/mtab /etc/profile /etc/syslog.pid /etc/utmp /var/adm/wtmp /var/log/wtmp /var/run/syslog.pid /etc/inittab /etc/sysctl.conf
 do
 	chmod 0700 $permissions
 done
