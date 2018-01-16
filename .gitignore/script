@@ -122,6 +122,7 @@ gedit /etc/resolv.conf
 gedit /etc/hosts
 gedit /etc/passwd
 gedit /etc/shadow
+echo 'vm.swappiness=1' >> /etc/sysctl.conf
 
 clear
 echo "End of script"
