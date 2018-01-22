@@ -18,3 +18,6 @@ if ! grep "ENCRYPT_METHOD SHA512" /etc/login.defs > /dev/null
 then
 	gedit /etc/login.defs
 fi
+
+#enforces password history
+sed -i -e "s/password sufficient pam_unix.so use_authtok/password sufficient pam_unix.so use_authtok md5 shadow remember=13/" /etc/pam.d/common-password
