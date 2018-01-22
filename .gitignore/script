@@ -80,7 +80,10 @@ clear
 
 sed -i -e "s/PasswordAuthentication yes/PasswordAuthentication no/" /etc/ssh/ssh_config
 sed -i -e "s/PermitRootLogin yes/PermitRootLogin no/" /etc/ssh/sshd_config
+sed -i -e "s/# Port 22/Port 222/" /etc/ssh/sshd_config
+service sshd restart
 echo "SSH and SSHD policies have been set."
+echo "SSH is now on port 222"
 sleep 1
 clear
 
@@ -123,6 +126,8 @@ gedit /etc/hosts
 gedit /etc/passwd
 gedit /etc/shadow
 echo 'vm.swappiness=1' >> /etc/sysctl.conf
+
+
 
 clear
 echo "End of script"
