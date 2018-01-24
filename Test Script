@@ -1,6 +1,6 @@
 #!/bin/bash
 
-: <<'END'
+: <<'SKIP'
 ls /home > users
 cat users | while read users
 do
@@ -17,7 +17,6 @@ then
 fi
 # enforces password history
 sed -i -e "s/password sufficient pam_unix.so use_authtok/password sufficient pam_unix.so use_authtok md5 shadow remember=13/" /etc/pam.d/common-password
-END
 
 # system update
 clear
@@ -37,3 +36,4 @@ then
 else
 	echo "Remember to perform the update" > /home/$user/Desktop
 fi
+SKIP
