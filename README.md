@@ -53,7 +53,7 @@ Things It Do (In the order it is performed)
   - System Update
   - Install some useful security programs.
       - Useful Security Programs include:
-          apparmor bastille chkrootkit clamav lynis rkhunter ufw
+          apparmor, bastille, chkrootkit, clamav, lynis, rkhunter, ufw
       - The script will only automatically enable ufw and automatically run chkrootkit and bastille. The rest is up to user discretion
   - Setting some permissions.
   - Open some files that are important to the CyberPatriot competition. Can be ignored. Just keep hitting the 'x' button in the top left corner.
