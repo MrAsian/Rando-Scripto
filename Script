@@ -98,10 +98,6 @@ sed -i -e "s/alias net-pf-10 off/alias ipv6 off/" /etc/modprobe.d/aliases
 echo "IPv6 is disabled"
 clear
 
-# make sure nothing is in this file
-gedit /etc/rc.local
-
-clear
 read -p "Proper update settings have been set? Press [enter] continue."
 
 # install and enable firewall, along with other useful stuff
@@ -121,6 +117,8 @@ for permissions in /etc/hosts.allow /etc/mtab /etc/profile /etc/syslog.pid /etc/
 do
 	chmod 0700 $permissions
 done
+# make sure nothing is in the rc.local file
+gedit /etc/rc.local
 gedit /etc/resolv.conf
 gedit /etc/hosts
 gedit /etc/passwd
