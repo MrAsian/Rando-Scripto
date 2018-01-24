@@ -1,8 +1,12 @@
 # Rando-Scripto
+
+About
+-----
 Script to be used on Ubuntu images during CyberPatriot competitions. Created in 2016. Ongoing project.
 
-General Usage Notes
--------------------
+
+Usage
+-----
 Open the terminal and log in to superuser by running the following:
 ```shell
 sudo su
