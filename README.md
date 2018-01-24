@@ -1,7 +1,4 @@
 # Rando-Scripto
-
-About
------
 Script to be used on Ubuntu images during CyberPatriot competitions. Created in 2016. Ongoing project.
 
 
