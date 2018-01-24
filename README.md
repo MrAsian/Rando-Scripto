@@ -57,7 +57,7 @@ Things It Do (In the order it is performed)
           apparmor, bastille, chkrootkit, clamav, lynis, rkhunter, ufw
       - The script will only automatically enable ufw and automatically run chkrootkit and bastille. The rest is up to user discretion
   - Setting some permissions.
-  - Open some files that are important to the CyberPatriot competition. Can be ignored. Just keep hitting the 'x' button in the top left corner.
+  - Open some files that are important to the CyberPatriot competition. Can be ignored. Just keep hitting the 'x' button in the top left corner of the files that pop up. Or use the escape sequence "ctrl + c" to terminate the script.
 
 
 Things It Don't Do (In the order it is not performed)
