@@ -27,19 +27,18 @@ do
 	read -p "Update policy has been properly set? [y/n] " policy
 done
 
-whoami > user
 read -p "Proceed with update? [y/n] " yesno
 if [ $yesno == "y" ] || [ $yesno == "yes" ] || [ $yesno == "Y" ] || [ $yesno == "YES" ] || [ $yesno == "Yes" ]
 then
 	apt-get -y update
 	apt-get -y upgrade
 else
-	echo "Remember to perform the update" > /home/$user/Desktop
+	echo "Remember to perform the update" > /home/$current/Desktop
 fi
 
-CurrUser ()
+CurrentUser ()
 {
-	
+	current = "$(whoami)"
 }
 
 CopyToDesktop ()
