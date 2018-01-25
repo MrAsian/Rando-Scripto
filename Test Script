@@ -22,18 +22,29 @@ sed -i -e "s/password sufficient pam_unix.so use_authtok/password sufficient pam
 clear
 echo "Set proper password policy"
 read -p "Update policy has been properly set? [y/n] " policy
-while [ $policy == "n" ] || [ $policy == "no" ] || [ $policy == "N" ] || [ $policy == "NO" ]
+while [ $policy == "n" ] || [ $policy == "no" ] || [ $policy == "N" ] || [ $policy == "NO" ] || [ $policy == "No" ]
 do
 	read -p "Update policy has been properly set? [y/n] " policy
 done
 
 whoami > user
 read -p "Proceed with update? [y/n] " yesno
-if [ $yesno == "y" ] || [ $yesno == "yes" ] || [ $yesno == "Y" ] || [ $yesno == "YES" ]
+if [ $yesno == "y" ] || [ $yesno == "yes" ] || [ $yesno == "Y" ] || [ $yesno == "YES" ] || [ $yesno == "Yes" ]
 then
 	apt-get -y update
 	apt-get -y upgrade
 else
 	echo "Remember to perform the update" > /home/$user/Desktop
 fi
+
+CurrUser ()
+{
+	
+}
+
+CopyToDesktop ()
+{
+	
+}
+
 SKIP
