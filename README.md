@@ -5,19 +5,19 @@ Script to be used on Ubuntu images during CyberPatriot competitions. Created in 
 Usage
 -----
 Open the terminal and log in to superuser by running the following:
-```shell
+```bash
 sudo su
 ```
 It will prompt you to enter your password.
 
 After entering your password, run the following line:
-```shell
+```bash
 chmod +x Script
 ```
 It sets the permission for the script to be executable.
 
 To run the script itself, run the following line:
-```shell
+```bash
 ./Script
 ```
 
@@ -56,7 +56,7 @@ Things It Do (In the order it is performed)
   - Install some useful security programs.
       - Useful Security Programs include:
           apparmor, bastille, chkrootkit, clamav, lynis, rkhunter, ufw
-      - The script will only automatically enable ufw and automatically run chkrootkit and bastille. The rest is up to user discretion
+      - The script will only automatically enable ufw and automatically run chkrootkit and bastille. Whether to use or enable the rest is up to user discretion.
   - Setting some permissions.
   - Open some files that are important to the CyberPatriot competition. Can be ignored. Just keep hitting the 'x' button in the top left corner of the files that pop up. Or use the escape sequence "ctrl + c" to terminate the script.
 
@@ -71,7 +71,7 @@ Things It Don't Do (In the order it is not performed)
 Future Updates
 --------------
   - Add an option that allows user to choose to perform a system update now or wait until later.
-  - Allow for user to set their own default password or use "Goodpassword123!"
+  - Allow for user to set their own default password or use "Goodpassword123!" as the default password.
       - Will also add an option to not change current user's password to the default.
 
 
