@@ -21,13 +21,6 @@ To run the script itself, run the following line:
 ./Script
 ```
 
-IMPORTANT: DO NOT RUN THE TEST SCRIPT!
---------------------------------------
-It is used as a backup for whatever I'm currently working on. It contains lines of code that is still being tested. Some of the code will throw a bunch of errors. Use it at your own discretion.
-
-
-The Test Script is currently set to skip the entirety of its code. If you really want to see the terminal filled with a bunch of unnessary error messages, remove ": <<'SKIP'" and "SKIP" from the code and run it.
-
 
 Things It Do (In the order it is performed)
 -------------------------------------------
