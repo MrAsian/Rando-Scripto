@@ -1,6 +1,7 @@
 # Ubuntu-Hardening-1
 Script to be used on Ubuntu images during CyberPatriot competitions. Created in 2016. Ongoing project.
 
+This is an outdated version of the scripte. Go [here](https://github.com/MrAsian/Ubuntu-Hardening-2) for the updated and revised version of the script.
 
 Usage
 -----
@@ -52,20 +53,6 @@ Things It Do (In the order it is performed)
       - The script will only automatically enable ufw and automatically run chkrootkit and bastille. Whether to use or enable the rest is up to user discretion.
   - Setting some permissions.
   - Open some files that are important to the CyberPatriot competition. Can be ignored. Just keep hitting the 'x' button in the top left corner of the files that pop up. Or use the escape sequence "ctrl + c" to terminate the script.
-
-
-Things It Don't Do (In the order it is not performed)
------------------------------------------------------
-  - Remove the sketchy programs and media file extensions. That is up to the user, just in case you want to keep some of them on your system.
-  - Get you all those points in CyberPatriot competitions.
-  - Make you a good script writer. Seriously. I probably need to rewrite this because it's pretty poorly written.
-  
-  
-Future Updates
---------------
-  - Add an option that allows user to choose to perform a system update now or wait until later.
-  - Allow for user to set their own default password or use "Goodpassword123!" as the default password.
-      - Will also add an option to not change current user's password to the default.
 
 
 Contributors
