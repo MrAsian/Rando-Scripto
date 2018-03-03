@@ -9,17 +9,9 @@ Open the terminal and log in to superuser by running the following:
 ```bash
 sudo su
 ```
-It will prompt you to enter your password.
-
-After entering your password, run the following line:
+It will prompt you to enter your password. After entering your password, navigate to where the script is store and enter the following command to run it.
 ```bash
-chmod +x Script
-```
-It sets the permission for the script to be executable.
-
-To run the script itself, run the following line:
-```bash
-./Script
+bash ./Script
 ```
 
 
