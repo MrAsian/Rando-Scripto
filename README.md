@@ -1,5 +1,5 @@
 # Ubuntu-Hardening-1
-Script to be used on Ubuntu images during CyberPatriot competitions. Created in 2016. Ongoing project.
+Script to be used on Ubuntu images during CyberPatriot competitions. Created in 2016.
 
 This is an outdated version of the scripte. Go [here](https://github.com/MrAsian/Ubuntu-Hardening-2) for the updated and revised version of the script.
 
